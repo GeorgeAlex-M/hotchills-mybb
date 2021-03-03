@@ -1,0 +1,2486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0042)https://hotchills.org/showthread.php?tid=6 -->
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 5 - Test Management</title>
+<!-- start: headerinclude -->
+<link rel="alternate" type="application/rss+xml" title="Latest Threads (RSS 2.0)" href="https://hotchills.org/syndication.php">
+<link rel="alternate" type="application/atom+xml" title="Latest Threads (Atom 1.0)" href="https://hotchills.org/syndication.php?type=atom1.0">
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<script type="text/javascript" src="./Chapter 5 - Test Management_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Chapter 5 - Test Management_files/jquery.plugins.min.js.download"></script>
+<script type="text/javascript" src="./Chapter 5 - Test Management_files/general.js.download"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/global.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/extra.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/footer.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/css3.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/star_ratings.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/showthread.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/avatarep.css">
+<link type="text/css" rel="stylesheet" href="./Chapter 5 - Test Management_files/zcolor.css">
+<!-- start: customcolor_headerinclude -->
+<link href="./Chapter 5 - Test Management_files/skin.css" rel="stylesheet" type="text/css">
+<link href="./Chapter 5 - Test Management_files/colorpicker.css" rel="stylesheet" type="text/css">
+<script>
+var css = jQuery("<link>");
+    css.attr({
+      rel:  "stylesheet",
+      type: "text/css",
+      href: "skin.css.php"
+    });
+    jQuery("head").append(css);
+</script><link rel="stylesheet" type="text/css" href="./Chapter 5 - Test Management_files/skin.css.php">
+<style>
+.custom_theme
+{
+    margin-left:5px;
+}
+
+.custom_theme #colorpicker{
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: transparent;
+    border: 3px solid black;
+    border-radius: 100%;
+    background: #35c070;
+}
+
+.colorpicker {
+    width: 356px;
+    height: 176px;
+    overflow: hidden;
+    position: absolute;
+    background: url(images/cp/colorpicker_background.png);
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+    z-index: 9000;
+    margin-left: 36px;
+}
+.colour_instructions{
+    width: 134px;
+    height: 92px;
+    position: absolute;
+    left: 211px;
+    top: 47px;
+    text-align: left;
+    font-size: 10px;
+    color: #898989;
+}
+.colorpicker_color {
+    width: 150px;
+    height: 150px;
+    left: 14px;
+    top: 13px;
+    position: absolute;
+    background: #f00;
+    overflow: hidden;
+    cursor: crosshair;
+}
+.colorpicker_color div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: url(images/cp/colorpicker_overlay.png);
+}
+.colorpicker_color div div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    overflow: hidden;
+    background: url(images/cp/colorpicker_select.gif);
+    margin: -5px 0 0 -5px;
+}
+.colorpicker_hue {
+    position: absolute;
+    top: 13px;
+    left: 171px;
+    width: 35px;
+    height: 150px;
+    cursor: n-resize;
+}
+.colorpicker_hue div {
+    position: absolute;
+    width: 35px;
+    height: 9px;
+    overflow: hidden;
+    background: url(images/cp/colorpicker_indic.gif) left top;
+    margin: -4px 0 0 0;
+    left: 0px;
+}
+.colorpicker_new_color {
+    position: absolute;
+    width: 130px;
+    height: 30px;
+    left: 213px;
+    top: 13px;
+    background: #f00;
+}
+.colorpicker_current_color {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    left: 283px;
+    top: 13px;
+    background: #f00;
+    display: none;
+}
+.colorpicker input {
+    background-color: transparent;
+    border: 1px solid transparent;
+    position: absolute;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #898989;
+    top: 4px;
+    right: 11px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    height: 11px;
+}
+.colorpicker_hex {
+    position: absolute;
+    width: 72px;
+    height: 22px;
+    background: url(images/cp/colorpicker_hex.png) top;
+    left: 212px;
+    top: 142px;
+}
+.colorpicker_hex input {
+    right: 6px;
+}
+.colorpicker_field {
+    height: 22px;
+    width: 62px;
+    background-position: top;
+    position: absolute;
+    display: none; /* Hide colour boxes */
+}
+.colorpicker_field span {
+    position: absolute;
+    width: 12px;
+    height: 22px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    cursor: n-resize;
+}
+.colorpicker_rgb_r {
+    background-image: url(images/cp/colorpicker_rgb_r.png);
+    top: 52px;
+    left: 212px;
+}
+.colorpicker_rgb_g {
+    background-image: url(images/cp/colorpicker_rgb_g.png);
+    top: 82px;
+    left: 212px;
+}
+.colorpicker_rgb_b {
+    background-image: url(images/cp/colorpicker_rgb_b.png);
+    top: 112px;
+    left: 212px;
+}
+.colorpicker_hsb_h {
+    background-image: url(images/cp/colorpicker_hsb_h.png);
+    top: 52px;
+    left: 282px;
+}
+.colorpicker_hsb_s {
+    background-image: url(images/cp/colorpicker_hsb_s.png);
+    top: 82px;
+    left: 282px;
+}
+.colorpicker_hsb_b {
+    background-image: url(images/cp/colorpicker_hsb_b.png);
+    top: 112px;
+    left: 282px;
+}
+.colorpicker_submit {
+    position: absolute;
+    width: 56px;
+    height: 22px;
+    background: url(images/cp/colorpicker_submit.png) top;
+    left: 288px;
+    top: 142px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.colorpicker_focus {
+    background-position: center;
+}
+.colorpicker_hex.colorpicker_focus {
+    background-position: bottom;
+}
+.colorpicker_submit.colorpicker_focus {
+    background-position: bottom;
+}
+.colorpicker_slider {
+    background-position: bottom;
+}
+</style>
+    
+<!-- end: customcolor_headerinclude --><!-- start: customcolor_headerinclude -->
+<link href="./Chapter 5 - Test Management_files/skin.css" rel="stylesheet" type="text/css">
+<link href="./Chapter 5 - Test Management_files/colorpicker.css" rel="stylesheet" type="text/css">
+<script>
+var css = jQuery("<link>");
+    css.attr({
+      rel:  "stylesheet",
+      type: "text/css",
+      href: "skin.css.php"
+    });
+    jQuery("head").append(css);
+</script><link rel="stylesheet" type="text/css" href="./Chapter 5 - Test Management_files/skin.css.php">
+<style>
+.custom_theme
+{
+    margin-left:5px;
+}
+
+.custom_theme #colorpicker{
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: transparent;
+    border: 3px solid black;
+    border-radius: 100%;
+    background: #35c070;
+}
+
+.colorpicker {
+    width: 356px;
+    height: 176px;
+    overflow: hidden;
+    position: absolute;
+    background: url(images/cp/colorpicker_background.png);
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+    z-index: 9000;
+    margin-left: 36px;
+}
+.colour_instructions{
+    width: 134px;
+    height: 92px;
+    position: absolute;
+    left: 211px;
+    top: 47px;
+    text-align: left;
+    font-size: 10px;
+    color: #898989;
+}
+.colorpicker_color {
+    width: 150px;
+    height: 150px;
+    left: 14px;
+    top: 13px;
+    position: absolute;
+    background: #f00;
+    overflow: hidden;
+    cursor: crosshair;
+}
+.colorpicker_color div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: url(images/cp/colorpicker_overlay.png);
+}
+.colorpicker_color div div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    overflow: hidden;
+    background: url(images/cp/colorpicker_select.gif);
+    margin: -5px 0 0 -5px;
+}
+.colorpicker_hue {
+    position: absolute;
+    top: 13px;
+    left: 171px;
+    width: 35px;
+    height: 150px;
+    cursor: n-resize;
+}
+.colorpicker_hue div {
+    position: absolute;
+    width: 35px;
+    height: 9px;
+    overflow: hidden;
+    background: url(images/cp/colorpicker_indic.gif) left top;
+    margin: -4px 0 0 0;
+    left: 0px;
+}
+.colorpicker_new_color {
+    position: absolute;
+    width: 130px;
+    height: 30px;
+    left: 213px;
+    top: 13px;
+    background: #f00;
+}
+.colorpicker_current_color {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    left: 283px;
+    top: 13px;
+    background: #f00;
+    display: none;
+}
+.colorpicker input {
+    background-color: transparent;
+    border: 1px solid transparent;
+    position: absolute;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #898989;
+    top: 4px;
+    right: 11px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    height: 11px;
+}
+.colorpicker_hex {
+    position: absolute;
+    width: 72px;
+    height: 22px;
+    background: url(images/cp/colorpicker_hex.png) top;
+    left: 212px;
+    top: 142px;
+}
+.colorpicker_hex input {
+    right: 6px;
+}
+.colorpicker_field {
+    height: 22px;
+    width: 62px;
+    background-position: top;
+    position: absolute;
+    display: none; /* Hide colour boxes */
+}
+.colorpicker_field span {
+    position: absolute;
+    width: 12px;
+    height: 22px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    cursor: n-resize;
+}
+.colorpicker_rgb_r {
+    background-image: url(images/cp/colorpicker_rgb_r.png);
+    top: 52px;
+    left: 212px;
+}
+.colorpicker_rgb_g {
+    background-image: url(images/cp/colorpicker_rgb_g.png);
+    top: 82px;
+    left: 212px;
+}
+.colorpicker_rgb_b {
+    background-image: url(images/cp/colorpicker_rgb_b.png);
+    top: 112px;
+    left: 212px;
+}
+.colorpicker_hsb_h {
+    background-image: url(images/cp/colorpicker_hsb_h.png);
+    top: 52px;
+    left: 282px;
+}
+.colorpicker_hsb_s {
+    background-image: url(images/cp/colorpicker_hsb_s.png);
+    top: 82px;
+    left: 282px;
+}
+.colorpicker_hsb_b {
+    background-image: url(images/cp/colorpicker_hsb_b.png);
+    top: 112px;
+    left: 282px;
+}
+.colorpicker_submit {
+    position: absolute;
+    width: 56px;
+    height: 22px;
+    background: url(images/cp/colorpicker_submit.png) top;
+    left: 288px;
+    top: 142px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.colorpicker_focus {
+    background-position: center;
+}
+.colorpicker_hex.colorpicker_focus {
+    background-position: bottom;
+}
+.colorpicker_submit.colorpicker_focus {
+    background-position: bottom;
+}
+.colorpicker_slider {
+    background-position: bottom;
+}
+</style>
+    
+<!-- end: customcolor_headerinclude -->
+<script type="text/javascript">
+	lang.unknown_error = "An unknown error has occurred.";
+
+	lang.select2_match = "One result is available, press enter to select it.";
+	lang.select2_matches = "{1} results are available, use up and down arrow keys to navigate.";
+	lang.select2_nomatches = "No matches found";
+	lang.select2_inputtooshort_single = "Please enter one or more character";
+	lang.select2_inputtooshort_plural = "Please enter {1} or more characters";
+	lang.select2_inputtoolong_single = "Please delete one character";
+	lang.select2_inputtoolong_plural = "Please delete {1} characters";
+	lang.select2_selectiontoobig_single = "You can only select one item";
+	lang.select2_selectiontoobig_plural = "You can only select {1} items";
+	lang.select2_loadmore = "Loading more results&hellip;";
+	lang.select2_searching = "Searching&hellip;";
+
+	var cookieDomain = ".hotchills.org";
+	var cookiePath = "/";
+	var cookieSecureFlag = "0";
+	var cookiePrefix = "";
+	var deleteevent_confirm = "Are you sure you want to delete this event?";
+	var removeattach_confirm = "Are you sure you want to remove the selected attachment from this post?";
+	var loading_text = 'Loading. <br />Please Wait&hellip;';
+	var saving_changes = 'Saving changes&hellip;';
+	var use_xmlhttprequest = "1";
+	var my_post_key = "6e0ea710fa229fe46d62a35f35774cc8";
+	var rootpath = "https://hotchills.org";
+	var imagepath = "https://hotchills.org/images/emerald";
+  	var yes_confirm = "Yes";
+	var no_confirm = "No";
+	var MyBBEditor = null;
+	var spinner_image = "https://hotchills.org/images/emerald/spinner.gif";
+	var spinner = "<img src='" + spinner_image +"' alt='' />";
+	var modal_zindex = 9999;
+</script>
+<link rel="stylesheet" href="./Chapter 5 - Test Management_files/all.css">
+<link href="./Chapter 5 - Test Management_files/css" rel="stylesheet" type="text/css">
+<link href="./Chapter 5 - Test Management_files/css(1)" rel="stylesheet"> 
+<script>
+	$(document).ready(function(){
+	
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+	
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+	
+	$('.scrollToDown').click(function(){
+		$('html, body').animate({scrollTop:$(document).height()},800);
+		return false;
+	});
+	
+});
+</script>
+<link rel="stylesheet" href="./Chapter 5 - Test Management_files/simplebar.min.css">
+<script src="./Chapter 5 - Test Management_files/simplebar.js.download"></script>
+<!-- end: headerinclude -->
+<script type="text/javascript">
+<!--
+	var quickdelete_confirm = "Are you sure you want to delete this post?";
+	var quickrestore_confirm = "Are you sure you want to restore this post?";
+	var allowEditReason = "1";
+	lang.save_changes = "Save Changes";
+	lang.cancel_edit = "Cancel Edit";
+	lang.quick_edit_update_error = "There was an error editing your reply:";
+	lang.quick_reply_post_error = "There was an error posting your reply:";
+	lang.quick_delete_error = "There was an error deleting your reply:";
+	lang.quick_delete_success = "The post was deleted successfully.";
+	lang.quick_delete_thread_success = "The thread was deleted successfully.";
+	lang.quick_restore_error = "There was an error restoring your reply:";
+	lang.quick_restore_success = "The post was restored successfully.";
+	lang.editreason = "Edit Reason";
+// -->
+</script>
+<!-- jeditable (jquery) -->
+<script type="text/javascript" src="./Chapter 5 - Test Management_files/report.js.download"></script>
+<script src="./Chapter 5 - Test Management_files/jeditable.min.js.download"></script>
+<script type="text/javascript" src="./Chapter 5 - Test Management_files/thread.js.download"></script>
+</head>
+<body>
+	<!-- start: header -->
+<div class="haut" style="height:65px">
+	<a href="https://hotchills.org/" id="logo"><i class="fab fa-hotjar"></i> Hot Chills</a>
+	<span class="useroptions">
+		<ul id="menu-deroulant" class="float-right-header">
+			<li class="hide_mobile">
+				<form action="https://hotchills.org/search.php" method="post">
+					  <input type="text" id="search" name="keywords" style="display: inline;font-family: roboto condensed;text-transform: uppercase;font-size: 13px;" placeholder="Search...">
+					  <input type="hidden" name="action" value="do_search">
+					  <input type="hidden" name="postthread" value="1">
+					  <input type="hidden" name="showresults" value="posts">
+				</form></li>
+			<li class="hide_mobile"><a href="https://hotchills.org/showthread.php?tid=6#" onclick="$(&quot;#search&quot;).animate({
+            width: &quot;toggle&quot;
+        });"><i style="padding:4px;" class="fa fa-search"></i></a></li>
+			<li id="search_mobile" style="display:none;"><a href="https://hotchills.org/search.php"><i style="padding:3px;" class="fa fa-search"></i></a></li>
+			<li><a onclick="$(&#39;#side&#39;).slideToggle( &#39;slow&#39; ); return false;" href="https://hotchills.org/showthread.php?tid=6#"><i class="fa fa-list"></i></a></li>
+			<!-- start: header_welcomeblock_member -->
+<li class="hide_mobile"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img title="admin" alt="admin" src="./Chapter 5 - Test Management_files/avatar_1.jpeg" style="float:left;width:25px;height:25px;border-radius:100%;margin-right:5px;position:relative;bottom:2px;"> <i class="fa fa-angle-double-down"></i></a>
+	<ul>
+		<li><a href="https://hotchills.org/private.php">Inbox</a></li>
+		<li><a href="https://hotchills.org/usercp.php">User CP</a></li>
+		<!-- start: header_welcomeblock_member_admin -->
+<li><a href="https://hotchills.org/admin/index.php">Admin CP</a></li>
+<!-- end: header_welcomeblock_member_admin -->
+		<!-- start: header_welcomeblock_member_moderator -->
+<li><a href="https://hotchills.org/modcp.php">Mod CP</a></li>
+<!-- end: header_welcomeblock_member_moderator -->
+		<li><a href="https://hotchills.org/member.php?action=logout&amp;logoutkey=5a34fbb356f9bcd7b319d349c127b4cf">Logout</a></li>
+	</ul>
+</li>
+<script>
+	var connected = 1;
+</script>
+
+<span class="menu_mobile" style="display:none;">
+	<a href="https://hotchills.org/private.php"><i class="fa fa-inbox"></i> Inbox</a>
+	<a href="https://hotchills.org/usercp.php"><i class="fa fa-cogs"></i> User CP</a>
+	<a href="https://hotchills.org/member.php?action=logout&amp;logoutkey=5a34fbb356f9bcd7b319d349c127b4cf"><i class="fa fa-sign-out-alt"></i> Logout</a>
+</span>
+<!-- end: header_welcomeblock_member -->
+		</ul>
+		<ul id="menu-deroulant" class="float-left-header">
+			<li><a href="https://hotchills.org/">Home</a></li>
+			<li><a href="https://hotchills.org/memberlist.php">Members</a></li>
+			<li><a href="https://hotchills.org/showteam.php">Team</a></li>
+			<li><a href="https://hotchills.org/misc.php?action=help">Help</a></li>
+			<li><a href="https://hotchills.org/showthread.php?tid=6#">More <i class="fa fa-angle-down"></i></a>
+				<ul>
+					<li><a href="https://www.linkedin.com/in/george-m-74320115b">Linkedin</a></li>
+					<li><a href="https://github.com/GeorgeAlex-M">Github</a></li>
+					<li><a href="https://www.facebook.com/business.george.am">Facebook</a></li>
+					<li><a href="https://www.instagram.com/george.alem/">Instagram</a></li>
+					<li><a href="https://www.youtube.com/channel/UCSfd7i8XdMHawL8ABBGb_oA">YouTube</a></li>
+				</ul>
+			</li>
+		</ul>
+	</span>
+</div>
+<div id="side" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+	<i id="side-close" onclick="$(&#39;#side&#39;).slideToggle( &#39;slow&#39; );" class="fa fa-times"></i>
+	<div id="side-links">
+		<div class="menu_mobile" style="display:none;"><span class="title">User Links</span><!-- start: header_welcomeblock_member -->
+<li class="hide_mobile"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img title="admin" alt="admin" src="./Chapter 5 - Test Management_files/avatar_1.jpeg" style="float:left;width:25px;height:25px;border-radius:100%;margin-right:5px;position:relative;bottom:2px;"> <i class="fa fa-angle-double-down"></i></a>
+	<ul>
+		<li><a href="https://hotchills.org/private.php">Inbox</a></li>
+		<li><a href="https://hotchills.org/usercp.php">User CP</a></li>
+		<!-- start: header_welcomeblock_member_admin -->
+<li><a href="https://hotchills.org/admin/index.php">Admin CP</a></li>
+<!-- end: header_welcomeblock_member_admin -->
+		<!-- start: header_welcomeblock_member_moderator -->
+<li><a href="https://hotchills.org/modcp.php">Mod CP</a></li>
+<!-- end: header_welcomeblock_member_moderator -->
+		<li><a href="https://hotchills.org/member.php?action=logout&amp;logoutkey=5a34fbb356f9bcd7b319d349c127b4cf">Logout</a></li>
+	</ul>
+</li>
+<script>
+	var connected = 1;
+</script>
+
+<span class="menu_mobile" style="display:none;">
+	<a href="https://hotchills.org/private.php"><i class="fa fa-inbox"></i> Inbox</a>
+	<a href="https://hotchills.org/usercp.php"><i class="fa fa-cogs"></i> User CP</a>
+	<a href="https://hotchills.org/member.php?action=logout&amp;logoutkey=5a34fbb356f9bcd7b319d349c127b4cf"><i class="fa fa-sign-out-alt"></i> Logout</a>
+</span>
+<!-- end: header_welcomeblock_member --><br></div>
+		<span class="title">Quick Links</span>
+		<a href="https://hotchills.org/index.php"><i class="fa fa-home"></i> Home</a>
+		<a href="https://hotchills.org/memberlist.php"><i class="fa fa-users"></i> Members</a>
+		<a href="https://hotchills.org/showteam.php"><i class="fa fa-user-tie"></i> Team</a>
+		<a href="https://hotchills.org/misc.php?action=help"><i class="fa fa-hands-helping"></i> Help</a>
+		<br>
+		<span class="title">More</span>
+		<a href="https://www.linkedin.com/in/george-m-74320115b/"><i class="fa fa-link"></i> Linkedin</a>
+		<a href="https://github.com/GeorgeAlex-M"><i class="fa fa-link"></i> Github</a>
+		<a href="https://www.facebook.com/business.george.am"><i class="fa fa-link"></i> Facebook</a>
+		<a href="https://www.instagram.com/george.alem/"><i class="fa fa-link"></i> Instagram</a>
+		<a href="https://www.youtube.com/channel/UCSfd7i8XdMHawL8ABBGb_oA"><i class="fa fa-link"></i> YouTube</a>
+		<br><br><br><br>
+	</div></div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div>
+</div>
+<div style="width: 100%; height: 80px;"></div>
+<!--
+<img id="banner" src="https://hotchills.org/images/emerald_extended/header.png" style="margin: 7px;width: 25%;">
+-->
+<div id="container">
+		<a name="top" id="top"></a>
+		<div id="header">
+		<div id="content">
+			<div class="wrapper">
+				
+				
+				
+				
+				
+				<!-- start: global_awaiting_activation -->
+<div class="red_alert">There is 1 account awaiting activation. Please go to your ACP to activate the user. <a href="https://hotchills.org/admin/index.php?module=user-awaiting_activation">Go to the ACP</a>.</div>
+<!-- end: global_awaiting_activation -->
+				<!-- start: nav -->
+<div class="navigation">
+	<a href="https://hotchills.org/index.php"><span id="home_bit"><i class="fa fa-home"></i></span></a><span><!-- start: nav_bit -->
+<a href="https://hotchills.org/index.php">Hot Chills</a><!-- start: nav_sep -->
+<i class="fa fa-angle-double-right"></i>
+<!-- end: nav_sep -->
+<!-- end: nav_bit --><!-- start: nav_bit -->
+<a href="https://hotchills.org/forumdisplay.php?fid=3">Software Engineering</a><!-- start: nav_sep -->
+<i class="fa fa-angle-double-right"></i>
+<!-- end: nav_sep -->
+<!-- end: nav_bit --><!-- start: nav_bit -->
+<a href="https://hotchills.org/forumdisplay.php?fid=2">Software Testing</a>
+<!-- end: nav_bit --><!-- start: nav_sep_active -->
+<i class="fa fa-angle-double-right"></i>
+<!-- end: nav_sep_active --><!-- start: nav_bit_active -->
+<span class="active">Chapter 5 - Test Management</span>
+<!-- end: nav_bit_active --></span>
+</div>
+<!-- end: nav -->
+					<br>
+<!-- end: header -->
+	
+	
+	<div>
+			<div style="font-size: 17px !important; background: #F6F6F6; border:none; color:#2C3E50; " class="thead">
+				
+	<div class="float_right">
+		<!-- start: showthread_newreply -->
+<a href="https://hotchills.org/newreply.php?tid=6" class="button new_reply_button"><i class="fa fa-reply"></i> New Reply</a>&nbsp;
+<!-- end: showthread_newreply -->
+	</div>
+	<!-- start: showthread_ratethread -->
+<div class="star_rating_container">
+        <script type="text/javascript" src="./Chapter 5 - Test Management_files/rating.js.download"></script>
+        <div id="success_rating_6" style="float: left; padding-top: 2px; padding-right: 10px;">&nbsp;</div>
+        <div class="inline_rating">
+
+<ul class="star_rating star_rating_notrated" id="rating_thread_6">
+<li style="width: 0%" class="current_rating" id="current_rating_6">0 Vote(s) - 0 Average</li>
+<li><a class="five_stars" title="5 stars out of 5" href="https://hotchills.org/ratethread.php?tid=6&amp;rating=5&amp;my_post_key=6e0ea710fa229fe46d62a35f35774cc8"></a></li>
+<li><a class="four_stars" title="4 stars out of 5" href="https://hotchills.org/ratethread.php?tid=6&amp;rating=4&amp;my_post_key=6e0ea710fa229fe46d62a35f35774cc8"></a></li>
+<li><a class="three_stars" title="3 stars out of 5" href="https://hotchills.org/ratethread.php?tid=6&amp;rating=3&amp;my_post_key=6e0ea710fa229fe46d62a35f35774cc8"></a></li>
+<li><a class="two_stars" title="2 stars out of 5" href="https://hotchills.org/ratethread.php?tid=6&amp;rating=2&amp;my_post_key=6e0ea710fa229fe46d62a35f35774cc8"></a></li>
+<li><a class="one_star" title="1 star out of 5" href="https://hotchills.org/ratethread.php?tid=6&amp;rating=1&amp;my_post_key=6e0ea710fa229fe46d62a35f35774cc8"></a></li>
+            </ul>
+        </div>
+</div>
+<!-- end: showthread_ratethread -->
+				<div>
+					<strong><i class="fa fa-comments" style="padding:3px;"></i> Chapter 5 - Test Management</strong>
+				</div>
+			</div>
+</div><table border="0" cellspacing="0" style="border-bottom:none;" cellpadding="7" class="tborder tfixed clear">
+
+
+<tbody><tr><td id="posts_container">
+	<div id="posts">
+		<!-- start: postbit -->
+
+<a name="pid65" id="pid65"></a>
+<div class="post classic" style="" id="post_65">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=65#pid65" title="Chapter 5 - Test Management">#1</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_65" id="inlinemod_65" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 03:48 PM <span class="post_edit" id="edited_by_65"><!-- start: postbit_editedby -->
+<span class="edited_post">(This post was last modified: <span title="03-02-2021, 11:09 PM">51 minutes ago</span> by <a href="https://hotchills.org/member.php?action=profile&amp;uid=1">admin</a>.)</span>
+<!-- end: postbit_editedby --></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_65">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Chapter 5</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Test Management</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.1 Test Organization</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Independent testing -&nbsp;A certain degree of independence often makes the tester&nbsp;more effective at finding defects due to differences between the authors and the testers thoughts.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Suppose we have a tester and a developer.&nbsp;During independent testing, testers and developers are provided with requirement, and they analyzed the requirement independently. After analysis the developer implements the code and tester designs test cases. Since they develop their work product independently The probability of finding defect increases. This is the biggest advantage of independent testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Degree of independence -&nbsp;Is used to represent how independent the testing team is.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Example:</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Developer testing their own code&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here, the developer who implements the code is testing their own developed code. Therefore, there is no independence in testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Testers within the development team</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here we have a team and it consists of both tester&nbsp;and developer. Now in this case, the degree of independence is more because the developer implements the code, but testing is not done by them. Testing is done by the tester. So we can say the degree of independence is more comparing to the last example.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Independent test team, same organization, same manager</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Suppose you have an independent test team. This test team is not part of development team. But the test team is in&nbsp;the same organization and under same management. In this case, again, the degree of independence is more compared to last example as the test team is separated from the development team.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Independent test team, same org, different manager</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here the test team is independent and organization is same, but the managers are different. So here again, the degree of independence is more comparing to last example, because here the managers are different.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Independent test team, different organisation</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here,the development team and testing team are in different organizations and all the previous examples, both the&nbsp;team were in same organization. And here they are in different organization. So it's very obvious that the degree of independence is more here.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Now, here we will see some of the benefits of independent testing:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. First benefit is that we can find different kinds of failures.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Independent testers are likely to recognize different kinds of failures compared to developers because of their different backgrounds and technical perspectives.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. An independent tester can verify, challenge or disprove assumptions made by stakeholders during specification and implementation of the system.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. Independent testers of a vendor can report in an upright and objective manner about the system under test without pressure of the company that hired them.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">There are a few drawbacks of independent testing also, which we will address here:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1.&nbsp;Isolation from the development team</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">It may lead to&nbsp;lack of collaboration, delays in providing feedback to the development team or an adversarial relationship with the development team.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2.&nbsp;Developers may lose a sense of responsibility for quality</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. Independent testers may be seen as a bottleneck</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">For example, during the release, if Tester finds a critical defect, then sometimes people think due to Tester. We are not able to release on time.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. Independent testers may lack some important information.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><img src="./Chapter 5 - Test Management_files/CqlrTIM.png" loading="lazy" alt="[Image: CqlrTIM.png]" class="mycode_img"></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Table arranged&nbsp;in the order of degree of independence. Highest degree is on the top.</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_65">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=65" onclick="MyBB.getIP(65); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=65" id="edit_post_65" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_65_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_65">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=65" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_65").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=65" onclick="Thread.deletePost(65); return false;" style="" id="quick_delete_65" title="Delete this thread" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_65').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=65" onclick="Thread.restorePost(65); return false;" style="display: none;" id="quick_restore_65" title="Restore this thread" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_65').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=65" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(65);" style="" id="multiquote_link_65" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_65').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid66" id="pid66"></a>
+<div class="post classic" style="" id="post_66">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=66#pid66" title="RE: Test Management">#2</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_66" id="inlinemod_66" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 03:55 PM <span class="post_edit" id="edited_by_66"><!-- start: postbit_editedby -->
+<span class="edited_post">(This post was last modified: 03-01-2021, 04:21 PM by <a href="https://hotchills.org/member.php?action=profile&amp;uid=1">admin</a>.)</span>
+<!-- end: postbit_editedby --></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_66">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.1.2 Tasks of a Test Manager and Tester</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Task of the test manager</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1.&nbsp;Develop or review a test policy and test strategy for the organization.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Remember one point, any task which can impact the overall test activity is done by the test manager. Since the test policy and test strategy has an impact on the overall testing, it is developed by the test manager.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. Plan the test activities by considering the context and understanding the test objectives and risks&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here also, you can see the test plan has impact on the overall testing and therefore, this is also task of the test manager.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">To plan the test activity the test manager:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Selects test approaches</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Estimates test time, effort and cost</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Acquires resources</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Defines test levels and test cycles</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Plans defect management</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. Write and update the test plan.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">And we also know that the test planning is done for the complete testing activity. So this test is also done by the test manager.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. Coordinate the test plan with project managers, product owners and others.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">That means overall test coordination is done by the test manager.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">5. Is responsible for shared testing perspectives with other project activities, such as integration planning.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">6. Initiate the analysis, design, implementation and execution of tests, monitor test progress and results and check the status of exit criteria and facilitate test completion activities.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So that means the test manager initiates the testing task and tester work for that task.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">7. Prepare and deliver test progress reports and test summary reports based on the information gathered.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Tester performs&nbsp;the testing activity and provides the data to the test manager. And using this data, test manager prepares and delivers test progress report and test&nbsp;summary reports.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">8.&nbsp;Adapt planning based on test results and progress and take any actions necessary for test control.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">As we know, testing is performed based on the test planning provided by the test manager. But after analyzing the data, if&nbsp;manager feels that the target is not achievable. Then is the task of the test manager to adapt the test plan. So the target can be achieved.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">9. Test manager, also support in setting up the defect management system and adequate configuration management of testware.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Defect management system records all the defect of the software. These records can be seen later as well if you want to review or want to check that how you have fixed that. These records can be used the knowledge-base for the future reference.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In simple terms, defect management system manages the defect found during the software development cycle.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Configuration management is a form of I.T. service management that ensures the configuration of system resources, computer systems, servers and other assets are known, good and trusted.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In simple terms configuration management is used to maintain the work product of the software development cycle.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">10. Test manager also introduce suitable metrics for measuring test progress and evaluating the quality of&nbsp;testing and the product.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">We know that during test, these metrics are generated, but which all data we need to collect is decided by the test manager. Afterwards this data is used for adapting test plan.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">11. Test manager supports the selection and implementation of tools to support the test process, including recommending the budget for tool selection, allocating time and effort for pilot projects, and providing continuing support in the use of the tool.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Selecting of test tool will also impact the complete testing activity. And that's why this is task of the test manager.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">12. Test manager also decide about the implementation of test environment.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">With the help of the tester, test manager decides how and when to implement test environment.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">13. Along with project related task, it is also task of the test manager to promote and advocate the testers, the test team and the test profession within the organization.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">14. It is the task of test manager to provide environment so that Tester can develop their skill.&nbsp;</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_66">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=66" onclick="MyBB.getIP(66); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=66" id="edit_post_66" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_66_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_66">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=66" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_66").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=66" onclick="Thread.deletePost(66); return false;" style="" id="quick_delete_66" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_66').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=66" onclick="Thread.restorePost(66); return false;" style="display: none;" id="quick_restore_66" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_66').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=66" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(66);" style="" id="multiquote_link_66" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_66').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid67" id="pid67"></a>
+<div class="post classic" style="" id="post_67">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=67#pid67" title="RE: Test Management">#3</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_67" id="inlinemod_67" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 04:31 PM <span class="post_edit" id="edited_by_67"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_67">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Tasks of a Tester</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. Review the document and contribute to test plan.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Now you can see the difference. Task of the test manager is to make test plan and task of the tester is to implement the test plan.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. Analyze, review and assess requirements, user stories and acceptance criteria, specifications and models for testability.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So Tests manager initiates the analysis process, but analysis is done by the tester.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. After the analysis of the requirement, the tester has to identify and document the test condition and provide traceability.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. We know that after test analysis, we have to do test design. Again, tests manager initiates the test design task, but is performed by the tester. Along with the design, the tester is involved in test setup and verifying test environment, often coordinating with system administration and network management.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">5. Implement the test cases and test procedures.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">6. Prepares and aquires test data as an input for the testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">7. As we know, after test implementation comes the test execution and Tester is involved in that.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Tester creates the detailed test execution schedule, and we use this for test case execution.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">8. Tester&nbsp;executes the test cases, once the test cases are executed. Tester evaluates the result. If Tester finds the deviation between the actual result and expected, then Tester documents it.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">9. This point is related to the usage of tool. If you remember, the test manager selects the tool, but Tester uses these tools to facilitate the test process.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">10. Tester is also involved in automating the manual test cases. Tester can also review tests developed by the others.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">11. Evaluate non-functional characteristics such as performance efficiency, reliability, usability, security, compatibility and portability.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Role of the tester in different test levels</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. Component testing&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Usually done by the developer.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2.Acceptance testing</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">It is performed by the business analyst.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. System test level</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">It is done by the independent test team.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. Operational acceptance testing</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">It's performed by the system administration staff.&nbsp;</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_67">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=67" onclick="MyBB.getIP(67); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=67" id="edit_post_67" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_67_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_67">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=67" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_67").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=67" onclick="Thread.deletePost(67); return false;" style="" id="quick_delete_67" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_67').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=67" onclick="Thread.restorePost(67); return false;" style="display: none;" id="quick_restore_67" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_67').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=67" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(67);" style="" id="multiquote_link_67" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_67').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid68" id="pid68"></a>
+<div class="post classic" style="" id="post_68">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=68#pid68" title="RE: Test Management">#4</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_68" id="inlinemod_68" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 04:54 PM <span class="post_edit" id="edited_by_68"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_68">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.2 Test Planning and Estimation</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - Test plan outlines test activities for development and maintenance projects.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><img src="./Chapter 5 - Test Management_files/iJHwrZz.png" loading="lazy" alt="[Image: iJHwrZz.png]" class="mycode_img"></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Test plan provides us&nbsp;roadmap to know when which activity will start and which activity will end. In test plan we decide when the testing will start, when test analysis and design will start, when will implement and execute the test cases, wWhen we will end our testing and when software will be released.&nbsp;But now the question, can we predict all the challenges before we start the project? The answer is no. We cannot. During testing, we may face issues and it may impact our initial planned activity. At that time, how we'll come on track. So to handle such situation, we have monitoring and control stage. We monitor each and every stage of testing. And if we see we are not going as per plan, monitoring stage gives feedback to the test planning stage and based on the feedback, the preplanning is done. So this is how planning process works.&nbsp;So now my question to you is, is test planning a one time activity? The answer is no. Test planning is a continuous activity. This point is very important. Remember it.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Different factors that can influence test planning:</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. Test policy and test strategy</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. Development lifecycle</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Like V model or agile model</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. Third is scope of testing</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">For example, you only want to do component testing or integration testing or system testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. Objective and risk</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">As we know, objective of system testing is different from objective of acceptance testing. In system testing we tried to find as much bugs as possible, but in acceptace&nbsp;testing our objective is to see that&nbsp;there are no bugs.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">5. Constraints and criticality</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">As we said before, testing of mobile phone will be done differently than testing of an aircraft.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">6. Testability and availability of resources</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">This is quite clear. If you have 10 people in team, you will plan differently than if you have 6&nbsp;people in team.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Test Planning Activities</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. Determining scope, objectives and risk</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In&nbsp;test plan we define the scope of testing. Then we determine the objective of testing. And we also list down the risks associated with the object under test.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. Defining&nbsp;the overall approach of testing</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><img src="./Chapter 5 - Test Management_files/25Z8w1c.png" loading="lazy" alt="[Image: 25Z8w1c.png]" class="mycode_img"></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">One example which I can give you here is model basis testing approach.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. Integrating and coordinating the test activities into the software lifecycle activities</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Since testing is not done in isolation, in test plan, we synchronize testing activity with the development activity. And what we focus here is when and&nbsp;which development activity will finish. So that we can perform testing on that stage. If we take example of V model, when the implementation will be done so that we can start component testing. So in test plan, we integrate and coordinate the test activities into the software lifecycle activities.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. During test plan we determine what to test</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">To do this test, we have to figure out&nbsp;how many resource we need. And we also determine how test activities will be carried out.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">5.&nbsp;Scheduling of test activities</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In test plan we scheduled these&nbsp;test activities. We already saw this where we schedule when the test will start, when these activities will be performed. And finally when testing will end. So scheduling is part of test planning.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">6. Selecting metrics for&nbsp;test monitoring and control&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">As we know, monitoring and control phase gives data to the planning phase. But what type of data we need to collect in monitoring stage is determined in the planning stage. So remember this point. Selecting metrics for test monitoring and control is done in planning stage.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">7.&nbsp;Budgeting for the test activities&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">This is done in planning stage.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">8. Determining the level of detail and structure for test documentation</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">We determine the structure for the test documentation.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">If you want to know more about test planning, you can refer to ISO/IEC/IEEE&nbsp;29119-3&nbsp;standard.&nbsp;</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_68">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=68" onclick="MyBB.getIP(68); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=68" id="edit_post_68" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_68_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_68">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=68" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_68").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=68" onclick="Thread.deletePost(68); return false;" style="" id="quick_delete_68" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_68').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=68" onclick="Thread.restorePost(68); return false;" style="display: none;" id="quick_restore_68" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_68').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=68" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(68);" style="" id="multiquote_link_68" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_68').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid69" id="pid69"></a>
+<div class="post classic" style="" id="post_69">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=69#pid69" title="RE: Test Management">#5</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_69" id="inlinemod_69" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 05:35 PM <span class="post_edit" id="edited_by_69"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_69">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.2.2 Test Strategy and Test Approach</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - A&nbsp;test strategy provides a generalized description of the test process, usually at the product or organizational level.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In simple terms, a test strategy defines which type of approach we will follow for testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><img src="./Chapter 5 - Test Management_files/M8TljRJ.png" loading="lazy" alt="[Image: M8TljRJ.png]" class="mycode_img"></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Tests process, generalized description of the test process is provided by test strategy and then which tests strategy to use depends on test approach, complexity and goal of the project, type of product being developed and product risk. And which test approach to use is based on risks, safety, available resources and skills, technology, the nature of the system, test objectives and regulations. Now, based on the test approach, we select test&nbsp;techniques, test level and tests type.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So this is how they are connected. At the top we have a test process, input to this is coming from the test strategy and input to the test strategy comes from the test approach. Test approach also helps in selecting test technique and test types.&nbsp;</span><br>
+<br>
+<span style="font-weight: bold;" class="mycode_b"><span style="font-family: Verdana;" class="mycode_font">Test strategies</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. Analytical strategy</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">As the name says, this type of test strategy is based on an analysis of some factor. These factors can be a requirement or risk. In simple terms, if you have to analyze requirements for testing, then it will come under this strategy. Similarly, if you have to test based on risk analysis, it will come under analytical testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So risk based testing is an example of an analytical approach where the test is designed and prioritized based on the level of risk. Analyzing requirement and risk is an example of an analytical strategy.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. Model based strategy&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here, tests are designed based on some model of some required aspect of the product, such as a function, a business process, an internal structure or a non-functional characteristic.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">The model based strategy is based on function, a business process, an internal structure or a non-functional characteristic.&nbsp; Example of these models are a business process model, state model, reliability, growth model.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3.&nbsp;Methodical strategy&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Here, test strategy relies on making systematic use of some predefined set of tests or test conditions. Here you will have existing data like predefined tests or test conditions, and you will use this for your testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Now, let's see an example of it. First is taxonomy of common or likely types of failures. Here you can have a list of failures already existing from your previous project and now you will use it for testing. Second example is a list of important quality characteristics. Here you have some standards where the important quality characteristic is already listed. Now for your project, you will use this predefined list from the standard. And the last example is company wide look and fuel standards for mobile or web pages.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. Process compliant (or standard compliant)</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">It is also called a standard compliant. This type of test strategy involves analyzing, designing and implementing tests based on external rules and standard. Don't get confused with the word analyze and link it to the analytical model. In the analytical model we analyze the requirement or risk of the product, but in process compliance model we analyze, design and implement tests based on external rules and standards. When we say external standard, that includes industry specific standards, process documentation, the rigorous identification and use of the test basis, any process or standard imposed on or by the organization.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">5. Directed (or consultative)</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Is sometimes also referred to as consultative. This type of test strategy is driven primarily by the advice, guidance or instructions of stakeholders, business domain experts or technology experts who may be outside the test team or outside the organization itself.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">6. Regression-averse</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">This type of test strategy is motivated by a desire to avoid the regression of existing capabilities. Here we tried to use the existing things available from past project, so we don't spend time on it again.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Let's see what all things we can reuse. We can reuse existing test environment, test cases and test data, extensive automation of regression tests, standard test suits. Just remember, in regression averse test strategy, we try to use the existing infrastructure.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">7. Reactive&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In this type of test strategy, testing is reactive to the component or system being tested and the events occurring during test execution rather than being preplanned. Here we plan during test executing, for example, if lots of defects are logged, then we plan accordingly. So here planning is done during test execution. To do this, we need an experienced tester who can design and implement a test case and immediately execute it&nbsp;based on the result from the previous test result.&nbsp;For example, in the case of exploratory testing.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">The last point with respect to test strategy is test strategy is often created by combining different test strategies. For example, we can combine risk based testing with exploratory testing because they complement each other and many achieve more effective testing when used together. So the point to make is test strategies can be combined.&nbsp;</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_69">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=69" onclick="MyBB.getIP(69); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=69" id="edit_post_69" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_69_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_69">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=69" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_69").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=69" onclick="Thread.deletePost(69); return false;" style="" id="quick_delete_69" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_69').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=69" onclick="Thread.restorePost(69); return false;" style="display: none;" id="quick_restore_69" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_69').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=69" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(69);" style="" id="multiquote_link_69" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_69').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid70" id="pid70"></a>
+<div class="post classic" style="" id="post_70">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=70#pid70" title="RE: Test Management">#6</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_70" id="inlinemod_70" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 05:46 PM <span class="post_edit" id="edited_by_70"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_70">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.2.3 Entry Criteria and Exit Criteria (Definition of Ready and Definition of Done)</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - Entry criteria are the preconditions for undertaking a given test activity.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Let's understand this. Suppose there is a testing phase. This could be any testing phase. Test design, test implementation or test execution. You want to start this testing phase, but before you could start, you have to look into the preconditions. Once all the preconditions are met, only then you can start this test activity. This is to ensure that you have everything that is required for testing. Similarly, if you want to end this testing activity, then you cannot suddenly end it. You have to see if all the post conditions are met. And once you find they are all met, you can stop the test activity. So here, preconditions are called entry criteria and post conditions are called exit criteria.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - Exit criteria define&nbsp;what condition must be achieved in order to declare a test level or a set of tests completed</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Remember, entry criteria is&nbsp;referred as definition of ready and exit criteria is referred as definition of done.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Examples of entry criteria:</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Availability of testable requirements, user stories and/or models. (<span style="color: #333333;" class="mycode_color"><span style="font-size: small;" class="mycode_size">F</span></span><span style="color: #333333;" class="mycode_color"><span style="font-size: small;" class="mycode_size">or example, when following a model based testing strategy.)</span></span></span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Availability of test items that have met the exit criteria for any prior test levels</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Availability of test environment</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Availability of necessary test tools</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Availability of test data and other necessary resources</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">Examples of exit criteria:</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">-&nbsp;Planned tests have been executed</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- A defined level of coverage (For example, of requirements, user stories, acceptance criteria, risks or&nbsp;Code has been achieved.)</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- The number of unresolved defects is within an agreed limit.&nbsp;</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- The number of estimated remaining defects is sufficiently low.</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- The evaluated levels of reliability, performance efficiency, usability, security and other relevant quality characteristics are sufficient.</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_70">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=70" onclick="MyBB.getIP(70); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=70" id="edit_post_70" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_70_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_70">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=70" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_70").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=70" onclick="Thread.deletePost(70); return false;" style="" id="quick_delete_70" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_70').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=70" onclick="Thread.restorePost(70); return false;" style="display: none;" id="quick_restore_70" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_70').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=70" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(70);" style="" id="multiquote_link_70" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_70').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid71" id="pid71"></a>
+<div class="post classic" style="" id="post_71">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=71#pid71" title="RE: Test Management">#7</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_71" id="inlinemod_71" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 07:02 PM <span class="post_edit" id="edited_by_71"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_71">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.2.4 Test Execution Schedule</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">We will address less theory and more practical based questions here. Let's first understand the scheduling concept and then, based on this understanding, will solve some questions.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So as we know in testing, first we analyze requirement. Then we write test cases or test procedures. Now, these test cases or procedures can be for manual testing or automation testing. In&nbsp;manual testing we follow the actions mentioned in the test procedure to perform testing and for automation testing we develop scripts based on the test procedure. So now whether you perform manual testing or automation testing, you have to decide which test procedure or test script will be used first for testing and which one will be used at the end. And to take this decision, test scheduling comes into the picture. Because we have so many test procedures and test scripts, there shall be an effective mechanism to execute them. So we go for prioritization of the test cases. Prioritization can be based on risk or based on some other factors. But the main point is high priority&nbsp;cases are executed first.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><img src="./Chapter 5 - Test Management_files/bbMBYUr.png" loading="lazy" alt="[Image: bbMBYUr.png]" class="mycode_img"></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Suppose these were the test scripts and these were their priority one being the highest priority. Then this is the order in which we have to execute the test cases. Now, let's use this concept to solve some practical examples.</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_71">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=71" onclick="MyBB.getIP(71); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=71" id="edit_post_71" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_71_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_71">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=71" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_71").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=71" onclick="Thread.deletePost(71); return false;" style="" id="quick_delete_71" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_71').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=71" onclick="Thread.restorePost(71); return false;" style="display: none;" id="quick_restore_71" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_71').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=71" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(71);" style="" id="multiquote_link_71" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_71').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid72" id="pid72"></a>
+<div class="post classic" style="" id="post_72">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=72#pid72" title="RE: Test Management">#8</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_72" id="inlinemod_72" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 07:08 PM <span class="post_edit" id="edited_by_72"><!-- start: postbit_editedby -->
+<span class="edited_post">(This post was last modified: 03-01-2021, 07:17 PM by <a href="https://hotchills.org/member.php?action=profile&amp;uid=1">admin</a>.)</span>
+<!-- end: postbit_editedby --></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_72">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.2.5 Factors Influencing the Test Effort</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - Test effort estimation involves predicting the amount of test-related work that will be needed in order to meet the objectives of the&nbsp;testing for a particular project, release or iteration.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In simple terms here, you calculate how much time you need to complete the testing activity. And there are some factors on which test estimation depends, like characteristics of the product, characteristics of the development process, characteristics of the people and the test results.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Characteristics of each factor</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">1. Product characteristics&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Examples are the risks associated with the product:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- the quality of the test basis</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the size of the product</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the complexity of the product domain</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the requirements for quality characteristics, for example security or reliability</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the required level of detail for test documentation</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- requirements for legal and regulatory compliance</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So all the things related to the product come under this.&nbsp;Like risk, quality, size, complexity, documentation and compliance of the product.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">2. Development process characteristics</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">All the inputs you need to develop the test process will come here like:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- the stability and maturity of the organization</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the development model in use</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the test approaches</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the tools used</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the test processes</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- time&nbsp;pressure</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So these are the things we need for the development of the process, model, approach and tools.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">3. People characteristics</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- the skills and experience of the people involved, especially with similar projects and products</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- domain knowledge</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- team cohesion and leadership</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">4. Test results</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- the number and severity of defects found</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- the amount of rework required</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_72">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=72" onclick="MyBB.getIP(72); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=72" id="edit_post_72" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_72_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_72">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=72" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_72").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=72" onclick="Thread.deletePost(72); return false;" style="" id="quick_delete_72" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_72').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=72" onclick="Thread.restorePost(72); return false;" style="display: none;" id="quick_restore_72" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_72').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=72" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(72);" style="" id="multiquote_link_72" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_72').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid73" id="pid73"></a>
+<div class="post classic" style="" id="post_73">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=73#pid73" title="RE: Test Management">#9</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_73" id="inlinemod_73" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 07:23 PM <span class="post_edit" id="edited_by_73"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_73">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.2.6 Test Estimation Techniques</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - In the metrics based technique, we estimate the test effort based on metrics of former similar projects or based on typical values</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Definition - In the&nbsp;expert based technique, we estimate the test effort based on the experience of the owners of the testing tasks or by experts.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">So it is clear in metric based technique, we use data from the previous similar project and in&nbsp;expert based technique, we use experience.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font"><img src="./Chapter 5 - Test Management_files/gxMD0vC.png" loading="lazy" alt="[Image: gxMD0vC.png]" class="mycode_img"></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Now, let's see the example of metric based technique and expert based technique with respect to the agile model and sequential model. This table is enough to cover all the points. Burndown&nbsp;charts is an example of metric based technique under the agile model. And planning poker is an example of expert based technique under the agile model. Defect removal model is an example of metric based technique under the sequential model. And Wideband delphi&nbsp;is an example of expert based technique under the sequential model.</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_73">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=73" onclick="MyBB.getIP(73); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=73" id="edit_post_73" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_73_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_73">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=73" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_73").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=73" onclick="Thread.deletePost(73); return false;" style="" id="quick_delete_73" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_73').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=73" onclick="Thread.restorePost(73); return false;" style="display: none;" id="quick_restore_73" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_73').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=73" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(73);" style="" id="multiquote_link_73" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_73').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit --><!-- start: postbit -->
+
+<a name="pid74" id="pid74"></a>
+<div class="post classic" style="" id="post_74">
+<div class="post_flexible">
+<div class="post_author scaleimages">
+	<center><strong><span class="largetext"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><span style="color: green;"><strong><em>admin</em></strong></span></a></span></strong> <!-- start: postbit_online -->
+<br><span style="color:green;" href="online.php" title="Online">Online</span>
+<!-- end: postbit_online --></center>
+	<!-- start: postbit_avatar -->
+<div class="author_avatar"><a href="https://hotchills.org/member.php?action=profile&amp;uid=1"><img src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="" width="85" height="85"></a></div>
+<!-- end: postbit_avatar --><br>
+	<div class="author_information">
+			
+			<span class="smalltext">
+				Administrator<br>
+				<i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><i style="color:#F3D646" class="fa fa-star"></i><br>
+				
+			</span>
+	</div>
+	<div class="author_statistics">
+		<!-- start: postbit_author_user -->
+<span style="float:left">Posts:</span> <span style="float:right">64</span><br>
+<span style="float:left">	Threads:</span> <span style="float:right">6</span><br>
+	<span style="float:left">Joined:</span><span style="float:right"> Jan 2021</span>
+	<!-- start: postbit_reputation -->
+<br><span style="float:left">Reputation:</span><span style="float:right"> <!-- start: postbit_reputation_formatted_link -->
+<a href="https://hotchills.org/reputation.php?uid=1"><strong class="reputation_neutral">0</strong></a>
+<!-- end: postbit_reputation_formatted_link --></span>
+<!-- end: postbit_reputation -->
+<!-- end: postbit_author_user -->
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		<!-- start: postbit_posturl -->
+<div class="float_right" style="vertical-align: top">
+<strong><a href="https://hotchills.org/showthread.php?tid=6&amp;pid=74#pid74" title="RE: Test Management">#10</a></strong>
+<!-- start: postbit_inlinecheck -->
+<input type="checkbox" class="checkbox" name="inlinemod_74" id="inlinemod_74" value="1" style="vertical-align: middle; margin: -2px 0 0 5px;">
+<!-- end: postbit_inlinecheck -->
+</div>
+<!-- end: postbit_posturl -->
+		
+		<span class="post_date"><i class="fa fa-clock-o"></i> 03-01-2021, 07:28 PM <span class="post_edit" id="edited_by_74"></span></span>
+	
+	</div>
+	<div class="post_body scaleimages" id="pid_74">
+		<span style="font-family: Verdana;" class="mycode_font"><span style="font-weight: bold;" class="mycode_b">5.3 Test Monitoring and Control</span></span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Test Monitoring -&nbsp;The purpose of test monitoring is to gather information and provide feedback and visibility about test activities</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">And we can gather information manually or automatically.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">The gathered information is then used:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- to evaluate the progress of testing</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- to check if exit criteria are met or not</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- to verify coverage target is met or not</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Test control -&nbsp;Describes any guiding or corrective actions taken as a result of information and metrics gathered and (possibly) reported.</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">In simple terms, we gather information in the test monitoring stage and then we use the information to take corrective actions.&nbsp;</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">Now, let's see some of the corrective action examples:</span><br>
+<br>
+<span style="font-family: Verdana;" class="mycode_font">- Re-prioritizing tests when an identified risk occurs (for example, software delivered late)</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Changing the test schedule due to availability or unavailability of a test environment or other resources</span><br>
+<span style="font-family: Verdana;" class="mycode_font">- Re-evaluating whether a test item meets an entry or exit criteria due to rework</span>
+	</div>
+	
+	
+	<div class="post_meta" id="post_meta_74">
+		<!-- start: postbit_iplogged_hiden -->
+IP Address: <a href="https://hotchills.org/moderation.php?action=getip&amp;pid=74" onclick="MyBB.getIP(74); return false;">Logged</a>
+<!-- end: postbit_iplogged_hiden -->
+	</div>
+</div>
+</div>
+<div class="post_controls">
+	<div class="postbit_buttons author_buttons float_left">
+		<!-- start: postbit_find -->
+<a href="https://hotchills.org/search.php?action=finduser&amp;uid=1" title="Find all posts by this user" class="postbit_find"><i class="fa fa-search"></i></a>
+<!-- end: postbit_find -->
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		<!-- start: postbit_edit -->
+<a href="https://hotchills.org/editpost.php?pid=74" id="edit_post_74" title="Edit this post" class="postbit_edit"><i class="fa fa-edit"></i></a>
+<div id="edit_post_74_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:;" class="popup_item quick_edit_button" id="quick_edit_post_74">Quick Edit</a></div><div class="popup_item_container"><a href="https://hotchills.org/editpost.php?pid=74" class="popup_item">Full Edit</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		$("#edit_post_74").popupMenu();
+	}
+// -->
+</script>
+<!-- end: postbit_edit --><!-- start: postbit_quickdelete -->
+<a href="https://hotchills.org/editpost.php?pid=74" onclick="Thread.deletePost(74); return false;" style="" id="quick_delete_74" title="Delete this post" class="postbit_qdelete"><i class="fa fa-trash"></i></a>
+<script type="text/javascript">
+// <!--
+	$('#quick_delete_74').css('display', '');
+// -->
+</script>
+<!-- end: postbit_quickdelete --><!-- start: postbit_quickrestore -->
+<a href="https://hotchills.org/editpost.php?pid=74" onclick="Thread.restorePost(74); return false;" style="display: none;" id="quick_restore_74" title="Restore this post" class="postbit_qrestore">Restore</a>
+<script type="text/javascript">
+// <!--
+	$('#quick_restore_74').css('display', 'none');
+// -->
+</script>
+<!-- end: postbit_quickrestore --><!-- start: postbit_quote -->
+<a href="https://hotchills.org/newreply.php?tid=6&amp;replyto=74" title="Quote this message in a reply" class="postbit_quote"><i class="fa fa-comment"></i></a>
+<!-- end: postbit_quote --><!-- start: postbit_multiquote -->
+<a href="javascript:Thread.multiQuote(74);" style="" id="multiquote_link_74" title="Quote this post" class="postbit_multiquote"><i class="fa fa-comments"></i></a>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_link_74').css("display", "");
+// -->
+</script>
+<!-- end: postbit_multiquote -->
+	</div>
+</div>
+</div>
+<!-- end: postbit -->
+	</div>
+</td></tr>
+		<tr>
+			<td class="tfoot" style="background:rgb(246, 246, 246);">
+				<!-- start: showthread_search -->
+	<div class="float_right" style="padding:15px">
+		<form action="https://hotchills.org/search.php" method="post">
+			<input type="hidden" name="action" value="thread">
+			<input type="hidden" name="tid" value="6">
+			<input type="text" name="keywords" value="Enter Keywords" onfocus="if(this.value == &#39;Enter Keywords&#39;) { this.value = &#39;&#39;; }" onblur="if(this.value==&#39;&#39;) { this.value=&#39;Enter Keywords&#39;; }" class="textbox" size="25">
+			<input type="submit" class="button" value="Search Thread">
+		</form>
+	</div>
+<!-- end: showthread_search -->
+				<div style="padding:15px">
+					<strong>« <a href="https://hotchills.org/showthread.php?tid=6&amp;action=nextoldest">Next Oldest</a> | <a href="https://hotchills.org/showthread.php?tid=6&amp;action=nextnewest">Next Newest</a> »</strong><br><!-- start: showthread_usersbrowsing -->
+<br>
+<span class="smalltext">Users browsing this thread: <a href="https://hotchills.org/member.php?action=profile&amp;uid=1" title="Reading… (12:01 AM)"><span style="color: green;"><strong><em>admin</em></strong></span></a></span>
+<br>
+<!-- end: showthread_usersbrowsing -->
+				</div>
+			</td>
+		</tr>
+	</tbody></table>
+	<div class="float_left"> <br>
+		<!-- start: multipage -->
+<div class="pagination">
+<span class="pages">Pages ({1}):</span>
+<!-- start: multipage_page_current -->
+ <span class="pagination_current">1</span>
+<!-- end: multipage_page_current --><!-- start: multipage_page -->
+<a href="https://hotchills.org/showthread.php?tid=6&amp;page=2" class="pagination_page">2</a>
+<!-- end: multipage_page --><!-- start: multipage_nextpage -->
+<a href="https://hotchills.org/showthread.php?tid=6&amp;page=2" class="pagination_next">Next »</a>
+<!-- end: multipage_nextpage -->
+</div><br>
+<!-- end: multipage -->
+	</div>
+	<br class="clear">
+	<!-- start: showthread_quickreply -->
+<div id="quickreply_spinner" class="showthread_spinner" style="display: none"><img src="./Chapter 5 - Test Management_files/spinner.gif"></div>
+<br>
+
+<form method="post" action="https://hotchills.org/newreply.php?tid=6&amp;processed=1" name="quick_reply_form" id="quick_reply_form">
+	<input type="hidden" name="my_post_key" value="6e0ea710fa229fe46d62a35f35774cc8">
+	<input type="hidden" name="subject" value="RE: Chapter 5 - Test Management">
+	<input type="hidden" name="action" value="do_newreply">
+	<input type="hidden" name="posthash" value="31e3be893cdb965c87720e9b069b4fc9" id="posthash">
+	<input type="hidden" name="quoted_ids" value="" id="quoted_ids">
+	<input type="hidden" name="lastpid" id="lastpid" value="82">
+	<input type="hidden" name="from_page" value="1">
+	<input type="hidden" name="tid" value="6">
+	<input type="hidden" name="method" value="quickreply">
+
+	<table border="0" cellspacing="0" cellpadding="7" class="tborder">
+		<thead>
+			<tr>
+				<td class="thead" colspan="2">
+					<div><strong>Quick Reply</strong></div>
+				</td>
+			</tr>
+		</thead>
+		<tbody style="" id="quickreply_e">
+			<tr>
+				<td class="trow1 hide_mobile" valign="top" width="22%">
+					<strong>Message</strong><br>
+					<img border="0" src="./Chapter 5 - Test Management_files/avatar_1.jpeg" alt="admin" height="80" width="80" align="right">
+					<span class="smalltext">Type your reply to this message here.<br><br>
+					<!-- start: showthread_quickreply_options_signature -->
+<label><input type="checkbox" class="checkbox" name="postoptions[signature]" value="1">&nbsp;<strong>Signature</strong></label><br>
+<!-- end: showthread_quickreply_options_signature -->
+					<label><input type="checkbox" class="checkbox" name="postoptions[disablesmilies]" value="1">&nbsp;<strong>Disable Smilies</strong></label><!-- start: showthread_quickreply_options_close -->
+<br><label><input type="checkbox" class="checkbox" name="modoptions[closethread]" value="1">&nbsp;<strong>Close Thread</strong></label>
+<!-- end: showthread_quickreply_options_close --><!-- start: showthread_quickreply_options_stick -->
+<br><label><input type="checkbox" class="checkbox" name="modoptions[stickthread]" value="1">&nbsp;<strong>Stick Thread</strong></label>
+<!-- end: showthread_quickreply_options_stick --></span>
+				</td>
+				<td class="trow1">
+					<div style="width: 95%">
+						<textarea style="width: 100%; padding: 4px; margin: 0;" rows="8" cols="80" name="message" id="message" tabindex="1"></textarea>
+					</div>
+					<div class="editor_control_bar hide_mobile" style="width: 95%; padding: 4px; margin-top: 3px; display: none;" id="quickreply_multiquote">
+						<span class="smalltext">
+							You have selected one or more posts to quote. <a href="https://hotchills.org/newreply.php?tid=6&amp;load_all_quotes=1" onclick="return Thread.loadMultiQuoted();">Quote these posts now</a> or <a href="javascript:Thread.clearMultiQuoted();">deselect them</a>.
+						</span>
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center" class="tfoot"><input type="submit" class="button" value="Post Reply" tabindex="2" accesskey="s" id="quick_reply_submit"> <input type="submit" class="button" name="previewpost" value="Preview Post" tabindex="3"></td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+<!-- end: showthread_quickreply -->
+	
+	
+	<br>
+	<div class="float_left">
+		<ul class="thread_tools">
+			<li class="printable"><a href="https://hotchills.org/printthread.php?tid=6">View a Printable Version</a></li>
+			<!-- start: showthread_send_thread -->
+<li class="sendthread"><a href="https://hotchills.org/sendthread.php?tid=6">Send this Thread to a Friend</a></li>
+<!-- end: showthread_send_thread -->
+			<li class="subscription_add"><a href="https://hotchills.org/usercp2.php?action=addsubscription&amp;tid=6&amp;my_post_key=6e0ea710fa229fe46d62a35f35774cc8">Subscribe to this thread</a></li>
+			<!-- start: showthread_add_poll -->
+<li class="poll"><a href="https://hotchills.org/polls.php?action=newpoll&amp;tid=6">Add Poll to this thread</a></li>
+<!-- end: showthread_add_poll -->
+		</ul>
+	</div>
+
+	<div class="float_right" style="text-align: right;">
+		<!-- start: showthread_moderationoptions -->
+<!-- start: showthread_inlinemoderation -->
+<script type="text/javascript" src="./Chapter 5 - Test Management_files/inline_moderation.js.download"></script>
+<form action="https://hotchills.org/moderation.php" method="post" style="margin-top: 0; margin-bottom: 0;" id="inlinemoderation_options">
+<input type="hidden" name="my_post_key" value="6e0ea710fa229fe46d62a35f35774cc8">
+<input type="hidden" name="tid" value="6">
+<input type="hidden" name="modtype" value="inlinepost">
+<span class="smalltext"><strong>Inline Post Moderation:</strong></span>
+<select name="action" id="inlinemoderation_options_selector">
+<!-- start: showthread_inlinemoderation_standard -->
+<optgroup label="Standard Tools">
+	<!-- start: showthread_inlinemoderation_softdelete -->
+<option value="multisoftdeleteposts">Soft Delete Posts</option>
+<!-- end: showthread_inlinemoderation_softdelete -->
+	<!-- start: showthread_inlinemoderation_restore -->
+<option value="multirestoreposts">Restore Posts</option>
+<!-- end: showthread_inlinemoderation_restore -->
+	<!-- start: showthread_inlinemoderation_delete -->
+<option value="multideleteposts">Delete Posts Permanently</option>
+<!-- end: showthread_inlinemoderation_delete -->
+	<!-- start: showthread_inlinemoderation_manage -->
+<option value="multimergeposts">Merge Posts</option>
+<option value="multisplitposts">Split Posts</option>
+<option value="multimoveposts">Move Posts</option>
+<!-- end: showthread_inlinemoderation_manage -->
+	<!-- start: showthread_inlinemoderation_approve -->
+<option value="multiapproveposts">Approve Posts</option>
+<option value="multiunapproveposts">Unapprove Posts</option>
+<!-- end: showthread_inlinemoderation_approve -->
+</optgroup>
+<!-- end: showthread_inlinemoderation_standard -->
+
+</select>
+<input type="submit" class="button" name="go" value="Go (0)" id="inline_go">&nbsp;
+<input type="button" class="button" onclick="inlineModeration.clearChecked();" value="Clear">
+</form>
+<script type="text/javascript">
+<!--
+	var go_text = "Go";
+	var all_text = "5";
+	var inlineType = "thread";
+	var inlineId = 6;
+
+	$("#inlinemoderation_options_selector").on('change', function() {
+		$("#inlinemoderation_options").trigger('submit');
+	})
+// -->
+</script><br>
+<!-- end: showthread_inlinemoderation -->
+<form action="https://hotchills.org/moderation.php" method="post" style="margin-top: 0; margin-bottom: 0;" id="moderator_options">
+	<input type="hidden" name="modtype" value="thread">
+	<input type="hidden" name="tid" value="6">
+	<input type="hidden" name="my_post_key" value="6e0ea710fa229fe46d62a35f35774cc8">
+	<span class="smalltext">
+	<strong>Moderation Options:</strong></span>
+	<select name="action" id="moderator_options_selector">
+		<option value="delayedmoderation">Delayed Moderation</option>
+		<!-- start: showthread_moderationoptions_standard -->
+<optgroup label="Standard Tools">
+<!-- start: showthread_moderationoptions_threadnotes -->
+<option value="threadnotes" selected="selected">Edit / View Thread Notes</option>
+<!-- end: showthread_moderationoptions_threadnotes -->
+<!-- start: showthread_moderationoptions_openclose -->
+<option class="option_mirage" value="openclosethread">Open / Close Thread</option>
+<!-- end: showthread_moderationoptions_openclose -->
+<!-- start: showthread_moderationoptions_softdelete -->
+<option value="softdeletethread">Soft Delete Thread</option>
+<!-- end: showthread_moderationoptions_softdelete -->
+<!-- start: showthread_moderationoptions_delete -->
+<option value="deletethread">Delete Thread Permanently</option>
+<!-- end: showthread_moderationoptions_delete -->
+
+<!-- start: showthread_moderationoptions_stickunstick -->
+<option class="option_mirage" value="stick">Stick / Unstick Thread</option>
+<!-- end: showthread_moderationoptions_stickunstick -->
+<!-- start: showthread_moderationoptions_manage -->
+<option class="option_mirage" value="move">Move / Copy Thread</option>
+<option class="option_mirage" value="split">Split Thread</option>
+<option class="option_mirage" value="merge">Merge Threads</option>
+<option class="option_mirage" value="removeredirects">Remove Redirects</option>
+<option class="option_mirage" value="removesubscriptions">Remove All Subscriptions</option>
+<!-- end: showthread_moderationoptions_manage -->
+<!-- start: showthread_moderationoptions_unapprove -->
+<option class="option_mirage" value="unapprovethread">Unapprove Thread</option>
+<!-- end: showthread_moderationoptions_unapprove -->
+</optgroup>
+<!-- end: showthread_moderationoptions_standard -->
+		
+	</select>
+	<!-- start: gobutton -->
+<input type="submit" class="button" value="Go">
+<!-- end: gobutton -->
+</form>
+<br>
+<script type="text/javascript">
+<!--
+	$("#moderator_options_selector").on('change', function() {
+		$("#moderator_options").trigger('submit');
+	})
+//-->
+</script>
+<!-- end: showthread_moderationoptions -->
+		<!-- start: forumjump_advanced -->
+<form action="https://hotchills.org/forumdisplay.php" method="get">
+<span class="smalltext"><strong>Forum Jump:</strong></span>
+<select name="fid" class="forumjump">
+<option value="-4">Private Messages</option>
+<option value="-3">User Control Panel</option>
+<option value="-5">Who's Online</option>
+<option value="-2">Search</option>
+<option value="-1">Forum Home</option>
+<!-- start: forumjump_bit -->
+<option value="1"> General</option>
+<!-- end: forumjump_bit --><!-- start: forumjump_bit -->
+<option value="4">-- News</option>
+<!-- end: forumjump_bit --><!-- start: forumjump_bit -->
+<option value="5">-- Suggestions and Ideas</option>
+<!-- end: forumjump_bit --><!-- start: forumjump_bit -->
+<option value="3"> Software Engineering</option>
+<!-- end: forumjump_bit --><!-- start: forumjump_bit -->
+<option value="2" selected="selected">-- Software Testing</option>
+<!-- end: forumjump_bit -->
+</select>
+<!-- start: gobutton -->
+<input type="submit" class="button" value="Go">
+<!-- end: gobutton -->
+</form>
+<script type="text/javascript">
+$(".forumjump").on('change', function() {
+	var option = $(this).val();
+
+	if(option < 0)
+	{
+		window.location = 'forumdisplay.php?fid='+option;
+	}
+	else
+	{
+		window.location = 'forumdisplay.php?fid='+option;
+	}
+});
+</script>
+<!-- end: forumjump_advanced -->
+	</div>
+	<br class="clear">
+	<!-- start: footer -->
+</div>
+</div>
+
+<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Hot Chills</h3>
+
+				<p class="footer-links">
+					<a href="https://hotchills.org/index.php">Home</a>
+					·
+					<a href="https://hotchills.org/memberlist.php">Members</a>
+					·
+					<a href="https://hotchills.org/showteam.php">Team</a>
+					·
+					<a href="https://hotchills.org/misc.php?action=help">Help</a>
+					·
+					<a href="https://hotchills.org/contact.php">Contact</a>
+				</p>
+
+				<p class="footer-company-name">
+					© Hot Chills, 2021 | This website is using cookies because they are tasty | <a style="font-weight: bold;color:white;" href="https://hotchills.org/disclaimer.php"> Disclaimer</a> | Designed by <a style="font-weight: bold;color:white;" href="https://developement.design/">D&amp;D</a> | Powered by <a style="font-weight: bold;color:white;" href="http://www.mybb.com/"> MyBB </a>
+				</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>Bucharest</span> Romania</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+40 721 996075</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:business.george.am@gmail.com">business.george.am@gmail.com</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About Hot Chills</span>
+					Over the course of humanity we have learned that knowledge is essential in our lives to better understand our purpose. Hot Chills was created for the sake of allowing people to contribute and engage in topics of common interest and thoughts.
+				</p>
+
+				<div class="footer-icons">
+
+					<a href="https://www.linkedin.com/in/george-m-74320115b"><i class="fab fa-linkedin"></i></a>
+					<a href="https://github.com/GeorgeAlex-M"><i class="fab fa-github"></i></a>
+					<a href="https://www.facebook.com/business.george.am"><i class="fab fa-facebook-f"></i></a>
+					<a href="https://www.instagram.com/george.alem/"><i class="fab fa-instagram"></i></a>
+					<a href="https://www.youtube.com/channel/UCSfd7i8XdMHawL8ABBGb_oA"><i class="fab fa-youtube"></i></a>
+
+				</div>
+
+			</div>
+
+		</footer>
+
+<div style="display: block; opacity: 0;" class="scrollToTop"><i class="fa fa-angle-up"></i></div>
+<div class="scrollToDown"><i class="fa fa-angle-down"></i></div>
+<!-- end: footer -->
+	<div id="thread_modes_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="https://hotchills.org/showthread.php?mode=linear&amp;tid=6&amp;pid=65#pid65" class="popup_item">Linear Mode</a></div><div class="popup_item_container"><a href="https://hotchills.org/showthread.php?mode=threaded&amp;tid=6&amp;pid=65#pid65" class="popup_item">Threaded Mode</a></div></div>
+	<script type="text/javascript">
+	// <!--
+		if(use_xmlhttprequest == "1")
+		{
+			$("#thread_modes").popupMenu();
+		}
+	// -->
+	</script>
+	<script type="text/javascript">
+		$(".author_avatar img").error(function () {
+			$(this).unbind("error").closest('.author_avatar').remove();
+		});
+	</script>
+
+
+<!-- end: showthread --></div></div></body></html>
