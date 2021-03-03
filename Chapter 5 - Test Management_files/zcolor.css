@@ -1,0 +1,40 @@
+#mobile_member, button:hover, input.button:hover, a.button:hover, .scrollToDown, .scrollToTop, .thead, .post_controls, #profile-fieldset .button
+{
+background: #35c070;
+}
+.nav_link, .headerlist ul, .useroptions a:hover, .thread_status.dot_folder:before, .thread_status.dot_hotfolder:before, .thread_status.dot_hotlockfolder:before, .thread_status.dot_lockfolder:before, .thread_status.dot_newfolder:before, .thread_status.dot_newhotfolder:before, .thread_status.dot_newhotlockfolder:before, .thread_status.dot_newlockfolder:before, .thread_status.folder:before, .thread_status.hotfolder:before, .thread_status.hotlockfolder:before, .thread_status.lockfolder:before, .thread_status.newfolder:before, .thread_status.newhotfolder:before, .thread_status.newhotlockfolder:before, .thread_status.newlockfolder:before, .modcp_nav_item:before, ul.thread_tools, ul.thread_tools li, #home_bit, .usercp_nav_item::before, .useroptions a:hover, #side-links a:hover
+{
+color:#35c070;
+}
+.nav_link:hover, .headerlist
+{
+border-bottom: 2px solid #35c070;
+}
+.footer-distributed {
+border-top: 3px solid #35c070;
+}
+#side-links a:hover 
+{
+	border-left: 3px solid #35c070;
+	box-sizing: border-box;   
+}
+.pagination a:hover {
+background: #35c070;
+opacity:0.9;
+}
+a:link, a:hover, a:visited, a:active, #logo, .navigation, .forum_off, .forum_offlock, .forum_offlink, .forum_on, .subforum_minion, .subforum_minioff, .subforum_miniofflock, .subforum_miniofflink, .sidebar_stat
+{
+	color: #35c070;
+}
+
+.star_rating_notrated li:hover a, .star_rating_notrated li:hover ~ li a
+{
+	color: #35c070 !important;
+}
+
+.pagination a, .pagination a:hover, .pagination .pagination_current
+{
+border-color: #35c070;
+}
+		
+		
